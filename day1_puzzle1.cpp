@@ -64,9 +64,22 @@ int main() {
         }
     }
     
-    cout << maxSum << endl;
+    // cout << maxSum << endl;
 
-   
+    sort(vectorOfSums.begin(), vectorOfSums.end());
+
+    for (auto i: vectorOfSums) {
+        cout << i << endl;
+    }
+
+    cout << "///////" << endl;
+
+    auto last = vectorOfSums.end()-1;
+    auto secondLast = vectorOfSums.end()-2;
+    auto thirdLast = vectorOfSums.end()-3;
+    
+    int finalAnswer =  (*last) + (*secondLast) + (*thirdLast);
+    cout << finalAnswer << endl;
 
 
 }
