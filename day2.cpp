@@ -38,9 +38,9 @@ int main() {
 
             cout << c1 << " " <<  c2 << endl;
             if (c1 == "A") {
-                if (c2 == "X") totalScore += 3+1;
-                if (c2 == "Y") totalScore += 6+2;
-                if (c2 == "Z") totalScore += 0+3;
+                if (c2 == "X") totalScore += 0+3;
+                if (c2 == "Y") totalScore += 3+1;
+                if (c2 == "Z") totalScore += 6+2;
 
             }
 
@@ -52,9 +52,9 @@ int main() {
             }
 
             if (c1 == "C") {
-                if (c2 == "X") totalScore += 6+1;
-                if (c2 == "Y") totalScore += 0+2;
-                if (c2 == "Z") totalScore += 3+3;
+                if (c2 == "X") totalScore += 0+2;
+                if (c2 == "Y") totalScore += 3+3;
+                if (c2 == "Z") totalScore += 6+1;
 
             }
         }
