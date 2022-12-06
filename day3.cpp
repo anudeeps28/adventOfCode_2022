@@ -2,6 +2,8 @@
 #include<fstream>
 #include<vector>
 #include<string>
+#include<algorithm>
+#include<numeric>
 
 using namespace std;
 
@@ -19,20 +21,21 @@ int main() {
         data.push_back(line);
     }
 
-    
-    int finalScore = 0;
+
+    vector<int> score = {};    
     for (int i = 0; i < data.size(); i++) {
-        int half = data[i].size()/2;
+        string word = data[i];
+        int half = word.size()/2;
         
-        vector<char> left;
-        vector<char> right;
+        vector<char> left = {};
+        vector<char> right = {};
 
         for (int j = 0; j < half; j++) {
-            left.push_back(data[i][j]);
+            left.push_back(word[j]);
         }
 
-        for (int j = half; j < data.size(); j++) {
-            right.push_back(data[i][j]);
+        for (int j = half; j < word.size(); j++) {
+            right.push_back(word[j]);
         }
 
         // for (auto i: left) {
@@ -48,26 +51,27 @@ int main() {
             }
         }
 
-        cout << commonChar << endl;
-
-        int score = 0;
-        if (int(commonChar) >= 97) {
-            score += int(commonChar) - 96;
+        int currentScore = 0;
+        if (122 >= int(commonChar) && int(commonChar) >= 97) {
+            currentScore += int(commonChar) - 96;
         }
 
-        if (int(commonChar) < 97) {
-            score += int(commonChar) - 38;
+        if (65 <= int(commonChar) && int(commonChar) <= 90) {
+            currentScore += int(commonChar) - 38;
         }
 
-        finalScore += score;
-
+        cout << commonChar << " " << int(commonChar) << " " << currentScore << endl;
+        score.push_back(currentScore);
+        
+        
+        // cout << endl;
         left.clear();
         right.clear();
 
     }
-
-    
-    cout << finalScore;
+   
+    int final = accumulate(score.begin(), score.end(), 0);
+    cout << final;
 
     
 }
