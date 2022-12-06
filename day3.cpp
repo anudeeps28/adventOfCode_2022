@@ -13,34 +13,61 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    vector<string> bags;
+    vector<string> data;
     string line;
     while(getline(myFile, line)) {
-        bags.push_back(line);
+        data.push_back(line);
     }
 
-    for (auto i: bags) {
-        cout << i << endl;
-    }
+    
+    int finalScore = 0;
+    for (int i = 0; i < data.size(); i++) {
+        int half = data[i].size()/2;
+        
+        vector<char> left;
+        vector<char> right;
 
-    vector<string> firstHalf;
-    vector<string> secondHalf;
-
-    for (int i = 0; i < bags.size(); i++) {
-        string currentBag = bags[i];
-
-        for (int j = 0; j < currentBag.size()/2; j++) {
-            firstHalf.push_back(currentBag[j]);
+        for (int j = 0; j < half; j++) {
+            left.push_back(data[i][j]);
         }
+
+        for (int j = half; j < data.size(); j++) {
+            right.push_back(data[i][j]);
+        }
+
+        // for (auto i: left) {
+        //     cout << i << " ";
+        // }
+
+        char commonChar;
+        for (int i = 0; i < left.size(); i++) {
+            for (int j = 0; j < right.size(); j++) {
+                if (left[i] == right[j]) {
+                    commonChar = left[i];
+                }
+            }
+        }
+
+        cout << commonChar << endl;
+
+        int score = 0;
+        if (int(commonChar) >= 97) {
+            score += int(commonChar) - 96;
+        }
+
+        if (int(commonChar) < 97) {
+            score += int(commonChar) - 38;
+        }
+
+        finalScore += score;
+
+        left.clear();
+        right.clear();
+
     }
 
-    for (auto i: firstHalf) {
-        cout << i;
-    }
-
-    // for (int j = (bags.size()/2 + 1); j < bags.size(); j++) {
-    //     secondHalf.push_back(bags[j]);
-    // }
+    
+    cout << finalScore;
 
     
 }
