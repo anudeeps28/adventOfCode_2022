@@ -16,6 +16,7 @@ int main() {
 
     string line;
     int counter = 0;
+
     while(getline(myFile, line)) {
         stringstream ss(line);
         string firstUpper;
@@ -24,41 +25,22 @@ int main() {
         string secondLower;
         
 
-        getline(ss, firstUpper, '-');
-        getline(ss, firstLower, ',');
-        getline(ss, secondUpper, '-');
-        getline(ss, secondLower, ';');
+        getline(ss, firstLower, '-');
+        getline(ss, firstUpper, ',');
+        getline(ss, secondLower, '-');
+        getline(ss, secondUpper, ' ');
 
         int firstUpperInt = stoi(firstUpper);
         int firstLowerInt = stoi(firstLower);
         int secondUpperInt = stoi(secondUpper);
         int secondLowerInt = stoi(secondLower);
 
-        // if ((firstUpperInt <= secondUpperInt && firstLowerInt >= secondLowerInt) || (secondUpperInt <= firstUpperInt && secondLowerInt >=firstLowerInt))
-        //     counter++;
-
-        vector<int> firstVector;
-        for (int i = firstUpperInt; i < firstLowerInt; i++) {
-            firstVector.push_back(i);
+        // the logic
+        if (firstLowerInt <= secondUpperInt && secondLowerInt <= firstUpperInt) {
+            counter++;
         }
-
-        for (auto i: firstVector) {
-            cout << i << " ";
-        }
-        cout << endl;
-        // vector<int> secondVector;
-        // for (int j = secondUpperInt; j < secondLowerInt; j++) {
-        //     secondVector.push_back(j);
-        // }
-
-        // for (int i = 0; i < firstVector.size(); i++) {
-        //     for (int j = 0; secondVector.size(); j++) {
-        //         if (firstVector[i] == secondVector[j]) {
-        //             counter++;
-        //         }
-        //     }
-        // }
     }
 
     cout << counter << endl;
 }
+
